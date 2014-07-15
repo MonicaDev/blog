@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<nav>
+		<h1><%= link_to "My Blog", root_path %></h1>
+			<ul>
+				<%if session[:user_id]%>
+					<li><%=link_to "Log Out",session_path(session[:user_id]), method: :delete, data: {confirm: 'are you sure you want to log out?'} %></li>
+					<li><%=link_to "Create Blog", new_user_post_path(session[:user_id]) %></li>
+				<%else%>
+					<li><%=link_to "Sign In", new_session_path %></li>
+					<li><%=link_to "Sign Up", new_user_path %></li>
+				<%end%>
+			</ul>
+	</nav>
+
+<%= yield %>
+
+</body>
+</html>

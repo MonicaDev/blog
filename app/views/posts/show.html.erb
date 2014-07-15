@@ -1,0 +1,8 @@
+<h1><%=@post.title%></h1>
+<p><%=@post.content%></p>
+
+<%if session[:user_id] == @post.user.id%>
+
+	<%=link_to "Edit Post", edit_user_post_path(current_user, @post)%>
+	
+<%end%>

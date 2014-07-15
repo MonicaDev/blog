@@ -1,0 +1,3 @@
+<%=render 'form' %>
+	
+<%=link_to "Delete Post", user_post_path(current_user, @post), method: :delete, data: {confirm: "are you sure?"}%>
